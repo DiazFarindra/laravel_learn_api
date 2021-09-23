@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users', UserController::class);
-Route::get('/tasks', [TaskController::class, 'index']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/users', UserController::class);
+    Route::get('/tasks', [TaskController::class, 'index']);
+});
+
+// auth api
+require __DIR__.'/api/auth.php';
+

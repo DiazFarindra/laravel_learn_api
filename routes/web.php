@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth:sanctum'])->name('dashboard');
 
+// Breeze auth
 require __DIR__.'/auth.php';
