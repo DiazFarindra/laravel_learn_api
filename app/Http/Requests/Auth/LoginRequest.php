@@ -34,6 +34,11 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function token_name()
+    {
+        return 'apptoken';
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *
